@@ -1,0 +1,130 @@
+name: Beginner
+description: A contained PyASL task requiring basic Git, Python, testing, and project knowledge.
+title: "[Beginner] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form when the task spans more than a trivial edit but has clear boundaries and acceptance criteria.
+
+        Do not report security vulnerabilities or include sensitive data here. Use the repository's private security reporting channel if one is available, or contact the maintainers privately.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and motivation
+      description: Describe the user or developer problem, the current behavior, and why it is worth changing.
+      placeholder: "Today ..., which causes ... for ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_change
+    attributes:
+      label: Proposed change
+      description: Describe the intended implementation at a feature or behavior level without prescribing unrelated refactoring.
+      placeholder: "Change ... so that ... while preserving ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected behavior
+      description: Define the input, action, output, error behavior, or UI result that contributors should be able to observe.
+      placeholder: |
+        Given ...
+        When ...
+        Then ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and relevant components
+      description: Identify the likely `pyasl/` packages, GUI areas, pipeline components, or test suites involved, plus what is out of scope.
+      placeholder: |
+        In scope:
+        - `pyasl/...`
+        - `tests/...`
+
+        Out of scope: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Technical context and implementation hints
+      description: Provide the existing behavior, constraints, useful symbols, configuration examples, or debugging clues a contributor needs.
+      placeholder: "The current path is ...; related behavior is covered by ...; preserve ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List testable outcomes, including normal and failure paths where relevant.
+      placeholder: |
+        - [ ] ...
+        - [ ] Invalid or missing ... is handled as ...
+        - [ ] Existing ... behavior still passes
+    validations:
+      required: true
+
+  - type: textarea
+    id: testing
+    attributes:
+      label: Testing requirements
+      description: Name the unit, integration, smoke, or GUI tests to add or update and the command contributors should run.
+      placeholder: |
+        Add/update `tests/...`.
+        Run `python -m pytest` (or the focused test path first).
+    validations:
+      required: true
+
+  - type: textarea
+    id: documentation
+    attributes:
+      label: Documentation requirements
+      description: Identify user-facing or developer documentation that must change, or explain why none is needed.
+      placeholder: "Update README.md / update ... / None because ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: edge_cases
+    attributes:
+      label: Edge cases
+      description: Call out boundary inputs, missing files, invalid pipeline data, platform differences, or GUI states that must be considered.
+      placeholder: "Consider ..."
+
+  - type: textarea
+    id: blockers
+    attributes:
+      label: Dependencies or blockers
+      description: Link related issues or state "None". Include any decision that should be made before implementation.
+      placeholder: "Depends on #123 / None"
+
+  - type: textarea
+    id: done
+    attributes:
+      label: Definition of Done
+      description: State what a pull request must contain to be ready for review.
+      placeholder: "Implementation, tests, documentation where required, and all acceptance criteria are complete."
+    validations:
+      required: true
+
+  - type: textarea
+    id: contributor_notes
+    attributes:
+      label: Contributor notes
+      description: Optional assumptions, proposed approach, or questions for maintainers.
+
+  - type: textarea
+    id: maintainer_notes
+    attributes:
+      label: Maintainer notes
+      description: Triage notes, ownership, and review guidance.

@@ -1,0 +1,20 @@
+gateway:
+  dco:
+    required: true
+  tests:
+    required: true
+  build:
+    required: true
+  secrets:
+    block: true
+  dangerous_workflow:
+    block: true
+  mutable_actions:
+    block: false
+  harden_runner:
+    required: false
+  dependency_vulnerabilities:
+    block: true
+  large_files:
+    warn_bytes: 5242880
+    fail_bytes: 52428800

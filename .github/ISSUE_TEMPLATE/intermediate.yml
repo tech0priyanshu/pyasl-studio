@@ -1,0 +1,135 @@
+name: Intermediate
+description: A multi-file PyASL change requiring architectural context and technical decisions.
+title: "[Intermediate] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for non-trivial work across components, such as pipeline, batch, GUI, module, QC, or utility behavior that needs coordinated tests.
+
+        Do not report security vulnerabilities or include sensitive data here. Use the repository's private security reporting channel if one is available, or contact the maintainers privately.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and motivation
+      description: Explain the user, scientific, reliability, or maintainability problem and the evidence that makes it worth addressing.
+      placeholder: "The current architecture/behavior ... This affects ... because ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_change
+    attributes:
+      label: Proposed change and expected behavior
+      description: Describe the target behavior and the main components that must change. Include a before/after flow or example where helpful.
+      placeholder: |
+        Current flow: ...
+        Proposed flow: ...
+        Expected result: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and affected components
+      description: Map the affected packages, modules, interfaces, data paths, and tests. Explicitly state what is out of scope.
+      placeholder: |
+        Affected:
+        - `pyasl/pipeline/...`
+        - `pyasl/gui/...`
+        - `tests/...`
+
+        Out of scope: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Technical context
+      description: Record relevant control flow, public APIs, data formats, threading or GUI constraints, configuration, and existing conventions.
+      placeholder: "The current contract is ...; callers include ...; data enters/leaves as ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: decisions
+    attributes:
+      label: Design considerations and implementation hints
+      description: Identify decisions the contributor must make, viable approaches, constraints, and the preferred direction when maintainers already have one.
+      placeholder: |
+        Consider:
+        - ...
+        - Preserve ...
+        - Avoid ...
+        Suggested investigation: ...
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Define observable behavior, interface compatibility, failure handling, and cross-component outcomes that reviewers can verify.
+      placeholder: |
+        - [ ] ...
+        - [ ] Components A and B agree on ...
+        - [ ] Failure case ... produces ...
+        - [ ] Existing workflows remain compatible
+    validations:
+      required: true
+
+  - type: textarea
+    id: testing
+    attributes:
+      label: Testing requirements
+      description: Specify unit, integration, smoke, or GUI coverage, fixtures or sample data, regression cases, and commands to run.
+      placeholder: |
+        Add/update tests under `tests/Unit Test/`, `tests/Integration Test/`, or `tests/Smoke Test/` as appropriate.
+        Run the focused tests, then `python -m pytest`.
+    validations:
+      required: true
+
+  - type: textarea
+    id: documentation
+    attributes:
+      label: Documentation requirements
+      description: Identify API, workflow, configuration, release, or user documentation affected by the behavior change.
+      placeholder: "Update ... / None because ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: edge_cases
+    attributes:
+      label: Edge cases and failure modes
+      description: Describe invalid inputs, partial results, cancellation, concurrency, platform differences, large batches, and recovery behavior relevant to this change.
+      placeholder: "The implementation must account for ..."
+
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and dependencies
+      description: Note public API, YAML/config, serialized data, Python-version, OS, or dependency compatibility constraints and related issues.
+      placeholder: "Must remain compatible with ...; depends on #123 / None"
+
+  - type: textarea
+    id: done
+    attributes:
+      label: Definition of Done
+      description: Describe the complete implementation, cross-component tests, documentation, compatibility review, and acceptance checks required for merge.
+      placeholder: "All affected components and regression tests are covered; documentation and compatibility checks are complete."
+    validations:
+      required: true
+
+  - type: textarea
+    id: contributor_notes
+    attributes:
+      label: Contributor notes
+      description: Capture an initial investigation, open technical questions, or a proposed implementation plan.
+
+  - type: textarea
+    id: maintainer_notes
+    attributes:
+      label: Maintainer notes
+      description: Record triage decisions, ownership, review focus, and any coordination needed.

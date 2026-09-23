@@ -1,0 +1,162 @@
+name: Advanced
+description: Significant PyASL work requiring architectural design, compatibility analysis, and maintainer coordination.
+title: "[Advanced] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for technically complex work whose difficulty comes from architectural or system-level decisions, not simply from having many files.
+
+        Discuss the design with maintainers before implementation when the change affects public behavior, pipeline contracts, GUI architecture, release artifacts, performance, reliability, or security.
+
+        Do not report security vulnerabilities or include sensitive data here. Use the repository's private security reporting channel if one is available, or contact the maintainers privately.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem, motivation, and constraints
+      description: Define the underlying problem, affected users or workflows, evidence, non-negotiable constraints, and why existing approaches are insufficient.
+      placeholder: |
+        Problem: ...
+        Impact: ...
+        Constraints: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Proposed outcome and expected behavior
+      description: Describe the desired end state, externally visible behavior, and success measures. Include diagrams or examples when they clarify boundaries.
+      placeholder: |
+        Target architecture/flow: ...
+        Expected behavior: ...
+        Success measures: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and affected subsystems
+      description: Identify all relevant packages, modules, interfaces, data formats, GUI or batch paths, tests, build/release surfaces, and explicit exclusions.
+      placeholder: |
+        Affected subsystems:
+        - `pyasl/...`
+        - `tests/...`
+        - `tools/...` or release packaging, if applicable
+
+        Explicitly out of scope: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: architecture
+    attributes:
+      label: Architectural and design considerations
+      description: Explain current boundaries and proposed boundaries, ownership, interfaces, dependency direction, migration strategy, and alternatives considered.
+      placeholder: |
+        Current design: ...
+        Proposed design: ...
+        Alternatives and trade-offs: ...
+        Migration or rollout: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and migration
+      description: Analyze Python and OS support, public APIs, pipeline/YAML contracts, persisted or exported data, existing users, release artifacts, and backward-compatibility expectations.
+      placeholder: "Existing consumers ...; compatibility must ...; migration/deprecation plan ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: quality
+    attributes:
+      label: Performance, reliability, and security considerations
+      description: Address relevant resource usage, large data or batch behavior, cancellation and recovery, concurrency, failure isolation, input validation, and security implications. Mark a dimension "Not applicable" with a reason when appropriate.
+      placeholder: |
+        Performance: ...
+        Reliability/recovery: ...
+        Security/input handling: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Implementation plan and decision points
+      description: Break the work into reviewable phases, identify risky unknowns or prototypes, and state which decisions need maintainer agreement before coding.
+      placeholder: |
+        1. Validate ...
+        2. Implement ...
+        3. Migrate/test ...
+
+        Maintainer decisions needed: ...
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Define measurable functional, architectural, compatibility, operational, and documentation outcomes for final review.
+      placeholder: |
+        - [ ] ...
+        - [ ] Existing supported workflows remain ...
+        - [ ] Failure and recovery behavior is ...
+        - [ ] Performance/reliability target ... is met or measured
+        - [ ] Migration and documentation are complete
+    validations:
+      required: true
+
+  - type: textarea
+    id: testing
+    attributes:
+      label: Testing and validation strategy
+      description: Specify unit, integration, smoke, GUI, cross-platform, regression, performance, failure-injection, or security validation. Include exact commands or fixtures that are already verified in the repository.
+      placeholder: |
+        Coverage: ...
+        Validation data/fixtures: ...
+        Commands: focused `python -m pytest ...`, then `python -m pytest`
+    validations:
+      required: true
+
+  - type: textarea
+    id: documentation
+    attributes:
+      label: Documentation and release requirements
+      description: Identify changes to README, API or workflow guidance, configuration references, release notes, packaging, or migration documentation.
+      placeholder: "Update ...; release note needed: yes/no; migration notes: ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: blockers
+    attributes:
+      label: Dependencies, risks, and blockers
+      description: Link prerequisite issues or proposals and list unresolved risks, external dependencies, ownership, and decisions that block implementation.
+      placeholder: "Depends on #123; risk ...; blocker ... / None"
+    validations:
+      required: true
+
+  - type: textarea
+    id: done
+    attributes:
+      label: Definition of Done
+      description: State the complete bar for merge, including implementation, design review, tests, compatibility, documentation, operational checks, and agreed rollout or migration.
+      placeholder: "Design approved; implementation and validation complete; compatibility, docs, and rollout plan are accepted."
+    validations:
+      required: true
+
+  - type: textarea
+    id: contributor_notes
+    attributes:
+      label: Contributor notes
+      description: Record prior investigation, open questions, proposed ownership, or a link to a design discussion.
+
+  - type: textarea
+    id: maintainer_notes
+    attributes:
+      label: Maintainer notes
+      description: Record triage outcome, reviewers, design decisions, milestones, and review focus.

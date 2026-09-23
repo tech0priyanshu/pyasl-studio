@@ -1,0 +1,114 @@
+name: Feature Request
+description: Propose new PyASL functionality or an improvement to an existing user workflow.
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for a feature proposal or user-facing improvement, not for reporting a bug or requesting a specific implementation task.
+
+        Do not report security vulnerabilities or include sensitive data here. Use the repository's private security reporting channel if one is available, or contact the maintainers privately.
+
+  - type: input
+    id: feature_title
+    attributes:
+      label: Feature title
+      description: Give the proposal a short, specific title that names the capability or user outcome.
+      placeholder: "Export pipeline results as ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and motivation
+      description: Explain the current limitation or unmet use case, who encounters it, and why the existing behavior is not sufficient.
+      placeholder: "Users who ... currently have to ... This is a problem because ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed solution
+      description: Describe what the feature should accomplish and the behavior users need. Focus on the outcome rather than requiring a particular implementation.
+      placeholder: "Add a way for users to ... so that ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case and beneficiaries
+      description: Describe who would use this, when they would use it, and a realistic PyASL example from pipeline execution, batch processing, visualization, or ASL data processing where applicable.
+      placeholder: |
+        A user working with ... would ...
+        Example: Given ..., the user ... and receives ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected behavior and user experience
+      description: Describe what users should see or receive after the feature is implemented, including inputs, outputs, states, and meaningful error behavior.
+      placeholder: |
+        Given ...
+        When ...
+        Then ...
+        If something goes wrong, ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: project_fit
+    attributes:
+      label: Project fit and scope
+      description: Explain how this supports PyASL's processing, pipeline, batch, GUI, or visualization goals. State the smallest useful version and what is explicitly out of scope.
+      placeholder: |
+        This belongs in PyASL because ...
+        Initial scope: ...
+        Out of scope: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: List workarounds, existing capabilities, or other approaches you considered and explain why they do not adequately solve the problem.
+      placeholder: "Current workaround: ...; insufficient because ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical_considerations
+    attributes:
+      label: Technical considerations
+      description: Add known relevant components, files, APIs, data formats, or dependencies. Mention performance, compatibility, security, platform, or architectural implications when applicable; contributors do not need to know exact internal paths.
+      placeholder: |
+        Possibly related area: `pyasl/...` or the GUI/pipeline workflow ...
+        Compatibility or performance consideration: ...
+        Security consideration: ...
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List concrete, observable conditions that would show the feature is complete and useful. Include normal and important failure or boundary cases.
+      placeholder: |
+        - [ ] A user can ...
+        - [ ] ... output is produced when ...
+        - [ ] Invalid or unavailable ... is handled as ...
+        - [ ] Existing workflows continue to ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional context
+      description: Add screenshots, mockups, references, related issues or pull requests, design proposals, sample data descriptions, or other material that clarifies the request.
+      placeholder: "Links and supporting context ..."

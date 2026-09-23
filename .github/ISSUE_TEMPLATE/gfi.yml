@@ -1,0 +1,113 @@
+name: GFI - Good First Issue
+description: A small, well-defined task with a clear starting point for a new PyASL contributor.
+title: "[GFI] "
+labels:
+  - good first issue
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for a focused change that a first-time PyASL contributor can start independently.
+
+        Do not report security vulnerabilities or include sensitive data here. Use the repository's private security reporting channel if one is available, or contact the maintainers privately.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and motivation
+      description: Explain the specific friction, defect, or small improvement and who is affected.
+      placeholder: "When a user ..., the current behavior ... This matters because ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected outcome
+      description: Describe the observable result after the task is complete. Include a short before/after example when useful.
+      placeholder: "After the change, ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and relevant files
+      description: List the small set of files, components, or user workflow involved. Link to exact paths when possible.
+      placeholder: |
+        - `pyasl/...`
+        - `tests/...`
+        - Not expected to change: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Suggested starting point
+      description: Give a concrete implementation direction and a short sequence a new contributor can follow.
+      placeholder: |
+        1. Start in `...` and locate `...`.
+        2. Make the smallest change that ...
+        3. Add or update the focused test in `...`.
+        4. Run `python -m pytest "tests/..."`.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List observable checks that must pass. Keep each item independently verifiable.
+      placeholder: |
+        - [ ] ...
+        - [ ] Existing behavior remains unchanged for ...
+        - [ ] A focused test covers ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: testing
+    attributes:
+      label: Testing requirements
+      description: State the focused test to add or update and any existing test command that should pass.
+      placeholder: "Add/update `tests/...`; run `python -m pytest \"tests/...\"`."
+    validations:
+      required: true
+
+  - type: textarea
+    id: documentation
+    attributes:
+      label: Documentation requirements
+      description: Say whether README or user-facing documentation needs a small update. Write "None" when no documentation change is needed.
+      placeholder: "Update ... / None"
+    validations:
+      required: true
+
+  - type: textarea
+    id: blockers
+    attributes:
+      label: Dependencies or blockers
+      description: Identify related issues, unavailable inputs, or decisions that must be resolved first. Write "None" when clear.
+      placeholder: "Depends on #123 / None"
+
+  - type: textarea
+    id: done
+    attributes:
+      label: Definition of Done
+      description: Summarize the final checklist for a matching pull request.
+      placeholder: "Code, focused test, documentation if needed, and acceptance criteria are complete."
+    validations:
+      required: true
+
+  - type: textarea
+    id: maintainer_notes
+    attributes:
+      label: Maintainer notes
+      description: Capture triage decisions, ownership, or details that help the contributor without expanding the scope.
+
+  - type: textarea
+    id: contributor_notes
+    attributes:
+      label: Contributor notes
+      description: Optional space for a contributor to record questions, assumptions, or a proposed starting branch.
