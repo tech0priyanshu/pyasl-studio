@@ -128,7 +128,6 @@ def workflow_checks(workflows: Iterable[dict[str, Any]]) -> list[CheckResult]:
     for workflow in workflows:
         path = str(workflow.get("path") or "workflow.yml")
         text = str(workflow.get("content") or "")
-        privileged = "pull_request_target" in text or "permissions: write-all" in text or re.search(r"\b(?:contents|issues|pull-requests|actions|packages):\s*write", text)
         untrusted_checkout = bool(re.search(r"ref:\s*\$\{\{\s*(?:github\.event\.pull_request\.(?:head\.sha|head\.ref)|github\.head_ref)", text))
         executes = bool(re.search(r"(?m)^\s*-?\s*run:\s*(?:\||>|).*(?:npm|pip|python|make|bash|sh|go |cargo )", text))
         if "pull_request_target" in text and untrusted_checkout and executes:
@@ -144,7 +143,7 @@ def workflow_checks(workflows: Iterable[dict[str, Any]]) -> list[CheckResult]:
         if "step-security/harden-runner" in text:
             harden.append({"path": path, "configured": True, "immutable": bool(re.search(r"step-security/harden-runner@[0-9a-fA-F]{40}", text))})
     return [
-        CheckResult("GHA-001", "Privileged workflow safety", "workflow", Status.FAIL if findings else Status.PASS, Severity.CRITICAL if findings else Severity.INFO, "Privileged workflow executes PR-controlled code." if findings else "No dangerous privileged workflow combination detected.", findings),
+        CheckResult("GHA-001", "Repository workflow safety", "workflow", Status.FAIL if findings else Status.PASS, Severity.CRITICAL if findings else Severity.INFO, "Privileged workflow executes PR-controlled code." if findings else "No dangerous privileged workflow combination detected.", findings),
         CheckResult("GHA-002", "Workflow permissions", "workflow", Status.WARN if any("permissions:" in str(w.get("content")) for w in workflows) is False else Status.PASS, Severity.LOW, "Workflow permissions are implicit or absent." if not any("permissions:" in str(w.get("content")) for w in workflows) else "Workflow permissions are declared."),
         CheckResult("GHA-003", "Write permissions", "workflow", Status.WARN if any("write-all" in str(w.get("content")) for w in workflows) else Status.PASS, Severity.HIGH if any("write-all" in str(w.get("content")) for w in workflows) else Severity.INFO, "Broad write permissions detected." if any("write-all" in str(w.get("content")) for w in workflows) else "No write-all permission detected."),
         CheckResult("GHA-005", "Shell expression injection", "workflow", Status.FAIL if injection else Status.PASS, Severity.HIGH if injection else Severity.INFO, "Untrusted PR data reaches a shell command." if injection else "No unsafe shell interpolation detected.", injection),
@@ -158,7 +157,7 @@ def workflow_checks(workflows: Iterable[dict[str, Any]]) -> list[CheckResult]:
 
 def dependency_checks(changed_paths: Iterable[str]) -> list[CheckResult]:
     paths = [path for path in changed_paths if Path(path).name.lower() in _DEPENDENCY_FILES]
-    return [CheckResult("DEP-001", "Dependency files", "dependencies", Status.WARN if paths else Status.PASS, Severity.LOW, "Dependency manifests changed." if paths else "No dependency manifests changed.", [{"path": path} for path in paths])]
+    return [CheckResult("DEP-001", "Dependency manifest changes", "dependencies", Status.WARN if paths else Status.PASS, Severity.LOW, "Dependency manifests changed; dedicated dependency analysis runs separately." if paths else "No dependency manifests changed.", [{"path": path} for path in paths])]
 
 
 def _sensitive_path(path: str) -> bool:

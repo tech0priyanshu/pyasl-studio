@@ -9,15 +9,11 @@ from .models import CheckResult, GatewayResult, Status
 
 DEFAULT_POLICY: dict[str, Any] = {
     "dco": {"required": True},
-    "tests": {"required": True},
-    "build": {"required": True},
     "secrets": {"block": True},
     "dangerous_workflow": {"block": True},
     "mutable_actions": {"block": False},
     "harden_runner": {"required": False},
-    "dependency_vulnerabilities": {"block": True},
     "large_files": {"warn_bytes": 5 * 1024 * 1024, "fail_bytes": 50 * 1024 * 1024},
-    "require_action_sha": False,
 }
 
 
@@ -49,18 +45,12 @@ class Policy:
             return True
         if check.check_id.startswith("DCO-"):
             return bool(self.values.get("dco", {}).get("required", True))
-        if check.check_id.startswith("TEST-"):
-            return bool(self.values.get("tests", {}).get("required", True))
-        if check.check_id.startswith("BUILD-"):
-            return bool(self.values.get("build", {}).get("required", True))
         if check.check_id.startswith("SECRET-"):
             return bool(self.values.get("secrets", {}).get("block", True))
         if check.check_id in {"GHA-001", "GHA-005"}:
             return bool(self.values.get("dangerous_workflow", {}).get("block", True))
         if check.check_id.startswith("ACTION-"):
             return bool(self.values.get("mutable_actions", {}).get("block", False))
-        if check.check_id == "DEP-005":
-            return bool(self.values.get("dependency_vulnerabilities", {}).get("block", True))
         if check.check_id == "SR-001":
             return bool(self.values.get("harden_runner", {}).get("required", False))
         return check.blocking

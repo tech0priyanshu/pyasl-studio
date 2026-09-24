@@ -3,6 +3,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from pr_gateway import runner
 from pr_gateway.detectors import commit_checks, dco_checks, file_checks, metadata_checks, secret_checks, workflow_checks
 from pr_gateway.models import Status
 from pr_gateway.policy import Policy
@@ -58,3 +59,20 @@ def test_policy_separates_warning_from_blocking():
     mutable = next(check for check in result.checks if check.check_id == "ACTION-002")
     assert mutable.status == Status.WARN
     assert mutable.blocking is False
+
+
+def test_commits_use_pr_head_sha(monkeypatch):
+    calls = []
+
+    class Result:
+        returncode = 0
+        stdout = ""
+
+    def fake_run(command, **kwargs):
+        calls.append(command)
+        return Result()
+
+    monkeypatch.setattr(runner.subprocess, "run", fake_run)
+    runner._commits(Path("."), "base-sha", "head-sha")
+
+    assert calls[0][-1] == "base-sha..head-sha"
