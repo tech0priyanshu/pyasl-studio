@@ -4,8 +4,8 @@
 #
 VSVersionInfo(
   ffi=FixedFileInfo(
-    filevers=(0, 3, 0, 0),
-    prodvers=(0, 3, 0, 0),
+    filevers=(0, 1, 0, 0),
+    prodvers=(0, 1, 0, 0),
     mask=0x3f,
     flags=0x0,
     OS=0x40004,
@@ -20,12 +20,12 @@ VSVersionInfo(
         '040904B0',
         [StringStruct('CompanyName', 'OSIPI TF2.2 Taskforce'),
          StringStruct('FileDescription', 'PyASL Pipeline GUI Desktop Application'),
-         StringStruct('FileVersion', '0.3.0.0'),
-         StringStruct('InternalName', 'PyASL-GUI'),
+         StringStruct('FileVersion', '0.1.0.0'),
+         StringStruct('InternalName', 'PyASL'),
          StringStruct('LegalCopyright', 'Copyright (c) 2026 OSIPI TF2.2 Taskforce'),
-         StringStruct('OriginalFilename', 'PyASL-GUI.exe'),
+         StringStruct('OriginalFilename', 'PyASL.exe'),
          StringStruct('ProductName', 'PyASL Pipeline GUI'),
-         StringStruct('ProductVersion', '0.3.0.0')])
+         StringStruct('ProductVersion', '0.1.0.0')])
       ]
     ),
     VarFileInfo([VarStruct('Translation', [1033, 1200])])
