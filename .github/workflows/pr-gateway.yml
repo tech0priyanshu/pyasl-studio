@@ -29,10 +29,15 @@ jobs:
           python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
           import json
           from pathlib import Path
-          result = json.loads(Path("gateway-result.json").read_text())
+          result_path = Path("gateway-result.json")
+          if not result_path.exists():
+              print("## PR Gateway: unavailable")
+              print("Gateway result was not created because an earlier step failed.")
+              raise SystemExit(0)
+          result = json.loads(result_path.read_text())
           print(f"## PR Gateway: {result['status']}")
-          print(f"Failures: {result['failures']} | Warnings: {result['warnings']}")
-          for check in result["checks"]:
+          print(f"Failures: {result.get('failures', 0)} | Warnings: {result.get('warnings', 0)}")
+          for check in result.get("checks", []):
               print(f"- {check['status']}: {check['check_id']} {check['name']} - {check['message']}")
           PY
       - name: Upload gateway result
@@ -41,3 +46,4 @@ jobs:
         with:
           name: pr-gateway-result
           path: gateway-result.json
+          if-no-files-found: ignore
